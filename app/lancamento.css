@@ -8,3 +8,19 @@ body {
   overflow: hidden;
 }
 
+canvas {
+  position: absolute;
+}
+#Floor {
+  box-shadow: 0px 0px 120px 25px #06193a inset;
+  z-index: 1;
+}
+#Preview {
+  z-index: 2;
+}
+#Track {
+  z-index: 3;
+}
+#Workspace {
+  z-index: 4;
+}
