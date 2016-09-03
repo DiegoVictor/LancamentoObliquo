@@ -28,6 +28,11 @@
 					y: this.height - 50
 				};
 			},
+
+			style: function (width) {
+				this.ctx.lineWidth = width || 2;
+				this.ctx.strokeStyle = 'white';
+			},
 		},
 
 		Floor: {
