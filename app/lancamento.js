@@ -102,6 +102,7 @@
 				this[Layer].canvas = this.Utils.Canvas(Layer);
 				this[Layer].ctx = this[Layer].canvas.getContext('2d');
 
+				this[Layer].Utils = this.Utils;
 				this[Layer].draw();
 			}, this);
 		}
