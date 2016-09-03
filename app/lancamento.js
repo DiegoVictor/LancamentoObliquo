@@ -98,6 +98,12 @@
 			this.Workspace.y = this.Floor.y;
 			this.status = 'stoped';
 
+			this.Utils.Layers.forEach(function (Layer) {
+				this[Layer].canvas = this.Utils.Canvas(Layer);
+				this[Layer].ctx = this[Layer].canvas.getContext('2d');
+
+				this[Layer].draw();
+			}, this);
 		}
 	};
 
