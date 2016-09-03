@@ -20,6 +20,16 @@
 				document.body.appendChild(canvas);
 				return canvas;
 			},
+
+			arc: function () {
+				this.ctx.beginPath();
+				this.ctx.arc(
+					this.x + this.Utils.margin, this.y - this.r,
+					this.r, 0, Math.PI * 2);
+				this.Utils.style.call(this, 1);
+				this.ctx.stroke();
+			},
+
 			update: function () {
 				this.height = window.innerHeight;
 				this.width = window.innerWidth;
