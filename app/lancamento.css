@@ -2,3 +2,9 @@
   font-family: sans-serif;
 }
 
+body {
+  background: #072a4b url("imgs/blueprint.png");
+  margin: 0px;
+  overflow: hidden;
+}
+
