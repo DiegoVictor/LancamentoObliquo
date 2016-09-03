@@ -50,21 +50,47 @@
 			unit: 200,
 			y: window.innerHeight - 35,
 			width: window.innerWidth,
+
+			draw: function () {
+				this.ctx.moveTo(0, this.y);
+				this.ctx.lineTo(this.width, this.y);
+
+				this.Utils.style.call(this);
+				this.ctx.stroke();
+
+				this.ctx.font = "14px Calibri, sans-serif";
+				this.ctx.fillStyle = 'white';
+				for (var i = 0; i < this.width / this.scale; i++) {
+					this.ctx.fillText(
+						i * this.unit, 30 + i * this.scale, this.y + 15);
+				}
+			},
 		},
 
 		Preview: {
 			show: false,
 			r: 0.5,
+
+			draw: function () {
+			}
 		},
 
 		Track: {
 			show: false,
 			r: 0.5,
+
+			draw: function (limit) {
+			}
 		},
 
 		Workspace: {
 			x: 0,
 			r: 4,
+
+			draw: function () {
+				this.Utils.config(this.canvas);
+				this.Utils.arc.call(this);
+			},
 		},
 
 		bootstrap: function () {
