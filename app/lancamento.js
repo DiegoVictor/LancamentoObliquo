@@ -45,6 +45,8 @@
 		bootstrap: function () {
 			this.Utils.update();
 			this.Workspace.y = this.Floor.y;
+			this.status = 'stoped';
+
 		}
 	};
 
