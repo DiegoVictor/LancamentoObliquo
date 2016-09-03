@@ -29,8 +29,22 @@
 				};
 			},
 		},
+
+		Floor: {
+			scale: 200,
+			unit: 200,
+			y: window.innerHeight - 35,
+			width: window.innerWidth,
+		},
+
+		Workspace: {
+			x: 0,
+			r: 4,
+		},
+
 		bootstrap: function () {
 			this.Utils.update();
+			this.Workspace.y = this.Floor.y;
 		}
 	};
 
