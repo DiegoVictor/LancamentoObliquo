@@ -37,6 +37,16 @@
 			width: window.innerWidth,
 		},
 
+		Preview: {
+			show: false,
+			r: 0.5,
+		},
+
+		Track: {
+			show: false,
+			r: 0.5,
+		},
+
 		Workspace: {
 			x: 0,
 			r: 4,
