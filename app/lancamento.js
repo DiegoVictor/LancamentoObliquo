@@ -20,8 +20,17 @@
 				document.body.appendChild(canvas);
 				return canvas;
 			},
+			update: function () {
+				this.height = window.innerHeight;
+				this.width = window.innerWidth;
+				this.max = {
+					x: this.width - 100,
+					y: this.height - 50
+				};
+			},
 		},
 		bootstrap: function () {
+			this.Utils.update();
 		}
 	};
 
