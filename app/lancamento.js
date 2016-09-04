@@ -30,6 +30,32 @@
 				this.ctx.stroke();
 			},
 
+			draw: function (step, limit) {
+				if (this.show) {
+					if (typeof limit === 'undefined') {
+						this.t = 0;
+						this.Utils.config(this.canvas);
+					}
+
+					do {
+						this.x = App.Launchment.vx * this.t;
+
+						this.y = App.Launchment.vy * this.t;
+						this.y -= this.Utils.g * Math.pow(this.t, 2) / 2;
+
+						if (this.y > 4 || typeof limit === 'number') {
+							this.y = App.Floor.y - App.Workspace.r - this.y;
+							this.Utils.arc.call(this);
+						}
+
+						this.t += step || 0.1;
+						if (typeof limit !== 'undefined' && this.t >= limit) {
+							break;
+						}
+					} while (this.x < App.Launchment.Amax);
+				}
+			},
+
 			update: function () {
 				this.height = window.innerHeight;
 				this.width = window.innerWidth;
@@ -76,6 +102,7 @@
 			r: 0.5,
 
 			draw: function () {
+				this.Utils.draw.call(this);
 			}
 		},
 
@@ -84,6 +111,7 @@
 			r: 0.5,
 
 			draw: function (limit) {
+				this.Utils.draw.call(this, 0.01, limit);
 			}
 		},
 
