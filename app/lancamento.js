@@ -163,6 +163,29 @@
 			}, this);
 
 			this.Launchment.Utils = this.Utils;
+
+			window.onresize = function () {
+				App.Utils.expand.call(App.Launchment)
+				.Layers.forEach(function (Layer) {
+					this.Utils.config(this[Layer].canvas);
+				}, App);
+				App.Floor.reset();
+
+				App.Preview.draw();
+				if (App.Launchment.t > 0) {
+					App.Track.t = 0;
+					App.Track.draw(App.Launchment.t);
+				}
+
+				if (App.status === 'stoped') {
+					App.Workspace.y = App.Floor.y;
+					App.Workspace.draw();
+
+					if (App.Launchment.t > 0) {
+						window.scrollTo(App.Utils.width, App.Utils.height);
+					}
+				}
+			};
 		}
 	};
 
