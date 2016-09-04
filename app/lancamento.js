@@ -93,6 +93,12 @@
 			},
 		},
 
+		Launchment: {
+			miliseconds: 60,
+			interval: null,
+			t: 0,
+		},
+
 		bootstrap: function () {
 			this.Utils.update();
 			this.Workspace.y = this.Floor.y;
@@ -105,6 +111,8 @@
 				this[Layer].Utils = this.Utils;
 				this[Layer].draw();
 			}, this);
+
+			this.Launchment.Utils = this.Utils;
 		}
 	};
 
