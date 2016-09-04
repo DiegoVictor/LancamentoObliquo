@@ -186,6 +186,15 @@
 					}
 				}
 			};
+			['mousedown', 'mousemove', 'mouseup'].forEach(function (event) {
+				this.addEventListener(event, (function () {
+					switch (event) {
+					case 'mousedown':
+					case 'mousemove':
+					case 'mouseup':
+					}
+				})());
+			}, this.Workspace.canvas);
 		}
 	};
 
