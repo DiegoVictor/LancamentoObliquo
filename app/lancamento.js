@@ -155,6 +155,19 @@
 			t: 0,
 		},
 
+		reset: function () {
+			clearInterval(this.Launchment.interval);
+			this.Utils.update();
+
+			this.Utils.Layers.forEach(function (Layer) {
+				this.Utils.config(this[Layer].canvas);
+
+				if (typeof this[Layer].reset === 'function') {
+					this[Layer].reset();
+				}
+			}, this);
+		},
+
 		bootstrap: function () {
 			this.Utils.update();
 			this.Workspace.y = this.Floor.y;
