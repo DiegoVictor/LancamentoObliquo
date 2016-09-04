@@ -209,6 +209,14 @@
 				this.addEventListener(event, (function () {
 					switch (event) {
 					case 'mousedown':
+						return function (e) {
+							App.reset();
+							App.status = 'preparing';
+							App.Launchment.t = App.Track.t = 0;
+							App.Mouse = {x1: e.clientX, y1: e.clientY};
+
+							window.scrollTo(0, 0);
+						};
 					case 'mousemove':
 					case 'mouseup':
 					}
