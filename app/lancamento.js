@@ -141,6 +141,12 @@
 				this.Utils.config(this.canvas);
 				this.Utils.arc.call(this);
 			},
+
+			reset: function () {
+				this.x = 0;
+				this.y = App.Floor.y;
+				this.draw();
+			}
 		},
 
 		Launchment: {
