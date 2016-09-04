@@ -37,6 +37,10 @@
 					x: this.width - 100,
 					y: this.height - 50
 				};
+
+				App.Launchment.max = {
+					x: this.width / 2, y: this.height - 185
+				};
 			},
 
 			style: function (width) {
