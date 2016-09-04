@@ -106,6 +106,13 @@
 						i * this.unit, 30 + i * this.scale, this.y + 15);
 				}
 			},
+
+			reset: function () {
+				this.y = this.Utils.height - 35;
+				this.width = this.Utils.width;
+				this.Utils.config(this.canvas);
+				this.draw();
+			}
 		},
 
 		Preview: {
