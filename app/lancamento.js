@@ -69,6 +69,17 @@
 				};
 			},
 
+			expand: function () {
+				this.Utils.update();
+				if (this.Hmax > this.Utils.max.y) {
+					this.Utils.height = this.Hmax + 200;
+				}
+				if (this.Amax > this.Utils.max.x) {
+					this.Utils.width = this.Amax + 150;
+				}
+				return this.Utils;
+			},
+
 			style: function (width) {
 				this.ctx.lineWidth = width || 2;
 				this.ctx.strokeStyle = 'white';
