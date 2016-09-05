@@ -154,6 +154,40 @@
 			interval: null,
 			t: 0,
 
+			update: function () {
+				this.x = this.vx * this.t;
+				if (this.x > this.Amax) {
+					App.status = 'stoped';
+					this.x = this.Amax;
+					clearInterval(this.interval);
+				}
+
+				this.scroll = {x: 0, y: this.Utils.height};
+				if (this.x > this.max.x) {
+					this.scroll.x = this.x - this.max.x;
+				}
+
+				this.y = this.vy * this.t;
+				this.y -= this.Utils.g * Math.pow(this.t, 2) / 2;
+				if (this.y > this.max.y) {
+					this.scroll.y -= (this.y + 150);
+				}
+				window.scrollTo(this.scroll.x, this.scroll.y);
+
+				if (this.y < 0) {
+					this.y = 0;
+				}
+
+				App.Workspace.x = this.x;
+				App.Workspace.y = App.Floor.y - this.y;
+				App.Workspace.draw();
+
+				this.vvy = this.vy - (this.Utils.g * this.t);
+
+				App.Track.draw(this.t);
+				this.t += 0.05;
+			},
+
 			prepare: function () {
 				var deg;
 
