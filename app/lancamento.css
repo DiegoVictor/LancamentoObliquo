@@ -8,6 +8,16 @@ body {
   overflow: hidden;
 }
 
+input {
+  background: transparent;
+  border: 0px;
+  color: white;
+  font-family: Calibri, sans-serif;
+  font-size: 16px;
+  margin-left: 3px;
+  position: absolute;
+}
+
 canvas {
   position: absolute;
 }
