@@ -153,6 +153,32 @@
 			miliseconds: 60,
 			interval: null,
 			t: 0,
+
+			prepare: function () {
+				var deg;
+
+				function toDegree (rad) {
+					return (rad / 180) * Math.PI;
+				};
+
+				if (App.status !== 'manually') {
+					this.x = App.Mouse.x1 - App.Mouse.x2;
+					this.y = App.Mouse.y2 - App.Mouse.y1;
+					this.v0 = Math.floor((this.x + this.y) / 4);
+					this.ang = Math.atan(this.y / this.x) * 180 / Math.PI;
+				}
+
+				deg = toDegree(this.ang);
+				this.vy = this.v0 * Math.sin(deg);
+				this.vx = this.v0 * Math.cos(deg);
+
+				this.Amax = Math.sin(toDegree(2 * this.ang));
+				this.Amax *= Math.pow(this.v0, 2);
+				this.Amax /= this.Utils.g;
+
+				this.Hmax = Math.pow(this.vy, 2);
+				this.Hmax *= 1 / this.Utils.g - 1 / (2 * this.Utils.g);
+			}
 		},
 
 		reset: function () {
