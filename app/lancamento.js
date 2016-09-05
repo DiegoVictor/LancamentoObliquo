@@ -278,6 +278,16 @@
 						};
 
 					case 'mouseup':
+						return function (e) {
+							if (App.status === 'preparing') {
+								if (e.clientY > App.Mouse.y1 && App.Mouse.x1 > e.clientX) {
+								}
+								else {
+									App.Workspace.reset();
+									App.status = 'stoped';
+								}
+							}
+						};
 					}
 				})());
 			}, this.Workspace.canvas);
