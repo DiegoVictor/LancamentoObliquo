@@ -243,7 +243,40 @@
 
 							window.scrollTo(0, 0);
 						};
+
 					case 'mousemove':
+						return function (e) {
+							if (App.status !== 'preparing') {
+								return ;
+							}
+
+							App.Workspace.draw();
+
+							App.Mouse.x2 = e.clientX;
+							App.Mouse.y2 = e.clientY;
+
+							App.Launchment.prepare();
+							if (e.clientY > App.Mouse.y1
+								&& App.Mouse.x1 > e.clientX) {
+								App.Preview.draw();
+							}
+							else {
+								App.Utils.config(App.Preview.canvas);
+							}
+
+							App.Workspace.ctx.beginPath();
+							App.Utils.style.call(App.Workspace);
+							App.Workspace.ctx.moveTo(App.Mouse.x1, App.Mouse.y1);
+							App.Workspace.ctx.lineTo(e.clientX, e.clientY);
+							App.Workspace.ctx.stroke();
+
+							App.Workspace.ctx.lineTo(App.Mouse.x1, e.clientY);
+							App.Workspace.ctx.lineTo(App.Mouse.x1, App.Mouse.y1);
+
+							App.Workspace.ctx.setLineDash([5, 5]);
+							App.Workspace.ctx.stroke();
+						};
+
 					case 'mouseup':
 					}
 				})());
