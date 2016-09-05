@@ -84,6 +84,21 @@
 				this.ctx.lineWidth = width || 2;
 				this.ctx.strokeStyle = 'white';
 			},
+
+			launch: function () {
+				this.expand.call(App.Launchment);
+				this.config(App.Track.canvas);
+
+				App.Floor.reset();
+				App.Preview.draw();
+				App.Workspace.reset();
+				window.scrollTo(0, this.height);
+
+				App.status = 'launching';
+				App.Launchment.interval = setInterval(function () {
+					App.Launchment.update();
+				}, App.Launchment.miliseconds);
+			}
 		},
 
 		Floor: {
@@ -315,6 +330,7 @@
 						return function (e) {
 							if (App.status === 'preparing') {
 								if (e.clientY > App.Mouse.y1 && App.Mouse.x1 > e.clientX) {
+									App.Utils.launch();
 								}
 								else {
 									App.Workspace.reset();
