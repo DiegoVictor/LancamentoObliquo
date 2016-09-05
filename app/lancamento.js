@@ -85,6 +85,15 @@
 				this.ctx.strokeStyle = 'white';
 			},
 
+			digest: function (Model) {
+				var value = App;
+
+				Model.split('.').forEach(function (variableName) {
+					value = value[variableName];
+				});
+				document.getElementById(Model).value = value;
+			},
+
 			launch: function () {
 				this.expand.call(App.Launchment);
 				this.config(App.Track.canvas);
@@ -93,6 +102,10 @@
 				App.Preview.draw();
 				App.Workspace.reset();
 				window.scrollTo(0, this.height);
+
+				['ang', 'v0', 'vx', 'Amax', 'Hmax'].forEach(function (prop) {
+					this.digest('Launchment.' + prop);
+				}, this);
 
 				App.status = 'launching';
 				App.Launchment.interval = setInterval(function () {
@@ -198,6 +211,9 @@
 				App.Workspace.draw();
 
 				this.vvy = this.vy - (this.Utils.g * this.t);
+				['vvy', 'x', 'y'].forEach(function (prop) {
+					this.digest('Launchment.' + prop);
+				}, this.Utils);
 
 				App.Track.draw(this.t);
 				this.t += 0.05;
@@ -290,6 +306,7 @@
 							App.Launchment.t = App.Track.t = 0;
 							App.Mouse = {x1: e.clientX, y1: e.clientY};
 
+							App.Utils.digest('Utils.g');
 							window.scrollTo(0, 0);
 						};
 
