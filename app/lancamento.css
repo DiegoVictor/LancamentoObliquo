@@ -18,6 +18,16 @@ input {
   position: absolute;
 }
 
+div.main {
+  margin: 20px;
+  position: fixed;
+  z-index: 5;
+}
+div.main > div.menu > img {
+  cursor: pointer;
+  opacity: 0.5;
+}
+
 canvas {
   position: absolute;
 }
