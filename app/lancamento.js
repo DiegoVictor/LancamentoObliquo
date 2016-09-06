@@ -316,6 +316,28 @@
 					}
 				}
 			};
+
+			document.getElementById('launch')
+			.addEventListener('click', function () {
+				App.reset();
+				App.status = 'manually';
+				App.Launchment.t = App.Track.t = 0;
+
+				['Utils.g', 'Launchment.ang', 'Launchment.v0'].forEach(function (Model) {
+					var refModel = App;
+					Model.split('.').forEach(function(variableName, index, ar) {
+						if (ar.length - 1 === index) {
+							refModel[variableName] = document.getElementById(Model).value;
+						}
+						else {
+							refModel = refModel[variableName];
+						}
+					});
+				});
+				App.Launchment.prepare();
+				App.Utils.launch();
+			});
+
 			['mousedown', 'mousemove', 'mouseup'].forEach(function (event) {
 				this.addEventListener(event, (function () {
 					switch (event) {
