@@ -272,6 +272,26 @@
 				this[Layer].draw();
 			}, this);
 
+			['Preview', 'Track'].forEach(function (Layer) {
+				document.getElementsByClassName(Layer)[0]
+				.addEventListener('click', function () {
+					App[Layer].show = !App[Layer].show;
+					this.style.opacity = App[Layer].show ? '1' : '0.5';
+
+					if (!App[Layer].show) {
+						App.Utils.config(App[Layer].canvas);
+					}
+
+					if (Layer === 'Preview') {
+						App.Preview.draw();
+					}
+					else if (Layer === 'Track') {
+						App.Track.t = 0;
+						App.Track.draw(App.Launchment.t);
+					}
+				});
+			});
+
 			this.Launchment.Utils = this.Utils;
 
 			window.onresize = function () {
