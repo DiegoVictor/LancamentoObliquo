@@ -292,6 +292,51 @@
 				});
 			});
 
+			this.data = this.about = false;
+			['data', 'about'].forEach(function (box) {
+				function DataToggle (elem) {
+					if (elem.style.visibility === 'visible') {
+						elem.style.opacity = '0';
+						elem.style.marginLeft = '0px';
+						this.style.opacity = '0.5';
+						setTimeout(function () {elem.style.visibility = 'hidden'}, 500);
+					}
+
+					else {
+						elem.style.visibility = 'visible';
+						this.style.opacity = '1';
+						setTimeout(function () {
+							elem.style.opacity = '1';
+							elem.style.marginLeft = '20px';
+						}, 100);
+					}
+				}
+
+				document.getElementsByClassName(box)[0]
+				.addEventListener('click', function () {
+					var elem = document.getElementsByClassName(box)[1];
+
+					App[box] = true;
+					if (App.data && App.about) {
+						var boxx = {data: 'about', about: 'data'}[box];
+						App[boxx] = false;
+
+						DataToggle.call(
+							document.getElementsByClassName(boxx)[0],
+							document.getElementsByClassName(boxx)[1]);
+
+						var self = this;
+						setTimeout(function () {
+							DataToggle.call(self, elem);
+						}, 500);
+
+						return;
+					}
+
+					DataToggle.call(this, elem);
+				});
+			});
+
 			this.Launchment.Utils = this.Utils;
 
 			window.onresize = function () {
