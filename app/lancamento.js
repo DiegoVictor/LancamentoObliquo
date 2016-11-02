@@ -91,7 +91,7 @@
 				Model.split('.').forEach(function (variableName) {
 					value = value[variableName];
 				});
-				document.getElementById(Model).value = value;
+				App.Utils.dom(Model).value = value;
 			},
 
 			launch: function () {
@@ -381,7 +381,7 @@
 					var refModel = App;
 					Model.split('.').forEach(function(variableName, index, ar) {
 						if (ar.length - 1 === index) {
-							refModel[variableName] = document.getElementById(Model).value;
+							refModel[variableName] = App.Utils.dom(Model).value;
 						}
 						else {
 							refModel = refModel[variableName];
