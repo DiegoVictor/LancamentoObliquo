@@ -111,6 +111,15 @@
 				App.Launchment.interval = setInterval(function () {
 					App.Launchment.update();
 				}, App.Launchment.miliseconds);
+			},
+
+			dom_elements: {},
+			dom: function (id) {
+				if (typeof this.dom_elements[id] === 'undefined') {
+					this.dom_elements[id] = document.getElementById(id);
+				}
+
+				return this.dom_elements[id];
 			}
 		},
 
