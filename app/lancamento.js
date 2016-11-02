@@ -402,6 +402,10 @@
 							App.Launchment.t = App.Track.t = 0;
 							App.Mouse = {x1: e.clientX, y1: e.clientY};
 
+							if (App.Utils.dom('Utils.g').value !== '') {
+								App.Utils.g = App.Utils.dom('Utils.g').value;
+							}
+
 							App.Utils.digest('Utils.g');
 							window.scrollTo(0, 0);
 						};
