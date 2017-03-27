@@ -373,23 +373,33 @@
 
 			document.getElementById('launch')
 			.addEventListener('click', function () {
+				var okToLaunch = false;
+				
 				App.reset();
 				App.status = 'manually';
 				App.Launchment.t = App.Track.t = 0;
 
-				['Utils.g', 'Launchment.ang', 'Launchment.v0'].forEach(function (Model) {
+				okToLaunch = ['Utils.g', 'Launchment.ang', 'Launchment.v0'].every(function (Model) {
 					var refModel = App;
-					Model.split('.').forEach(function(variableName, index, ar) {
+					return Model.split('.').every(function(variableName, index, ar) {
 						if (ar.length - 1 === index) {
+							if (App.Utils.dom(Model).value === '') {
+								return false;
+							}
 							refModel[variableName] = App.Utils.dom(Model).value;
 						}
 						else {
 							refModel = refModel[variableName];
 						}
+
+						return true;
 					});
 				});
-				App.Launchment.prepare();
-				App.Utils.launch();
+
+				if (okToLaunch) {
+					App.Launchment.prepare();
+					App.Utils.launch();
+				}
 			});
 
 			['mousedown', 'mousemove', 'mouseup'].forEach(function (event) {
