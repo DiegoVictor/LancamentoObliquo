@@ -28,7 +28,7 @@
 			this.scroll.x = this.width / 2 - 20;
 
 			for (size in sizes) {
-				if (sizes[size] > this[size] - 100) {
+				if (sizes[size] > this[size] - 150) {
 					this.useScroll = true;
 					this[size] = sizes[size] + 175;
 				}
