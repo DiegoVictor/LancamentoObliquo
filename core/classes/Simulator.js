@@ -214,6 +214,9 @@ var Simulator = {
 					callback(Projectile, Utils);
 				});
 				Track.draw(Calc, Utils.floor_y, Simulator.t);
+				Calc.show('velocity', function (callback) {
+					callback.call(Event, Utils, Floor.y, Simulator.t);
+				});
 				Simulator.t += 0.05;
 			},
 			Simulator.miliseconds

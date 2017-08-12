@@ -59,6 +59,24 @@
 					});
 				});
 				break;
+
+			case 'velocity':
+				draw(function (Utils, floor_y, t) {
+					this.canvas.clear();
+					this.ctx.fillStyle = 'white';
+					this.ctx.font = '14px Consolas';
+					this.ctx.textAlign = 'end';
+
+					this.ctx.save();
+					this.ctx.translate(window.innerWidth - 12, 0);
+					this.ctx.rotate(-89 * Math.PI / 180);
+					this.ctx.fillText(
+						'vy: ' +  (Calc.data.vy - (Utils.g * t)).toFixed(2),
+						-window.innerHeight / 2 + floor_y, 10
+					);
+					this.ctx.restore();
+				});
+				break;
 		}
 	},
 
