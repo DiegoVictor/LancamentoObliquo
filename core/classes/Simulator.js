@@ -197,6 +197,9 @@ var Simulator = {
 				if (Projectile.x >= Calc.data.Amax) {
 					clearInterval(Simulator.interval);
 				}
+				else {
+					Simulator.t += 0.05;
+				}
 
 				// Scroll the screen
 				(function (mustScrollY) {
@@ -217,7 +220,6 @@ var Simulator = {
 				Calc.show('velocity', function (callback) {
 					callback.call(Event, Utils, Floor.y, Simulator.t);
 				});
-				Simulator.t += 0.05;
 			},
 			Simulator.miliseconds
 		);
