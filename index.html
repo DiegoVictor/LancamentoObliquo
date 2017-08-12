@@ -1,70 +1,94 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
 	<meta charset="UTF-8">
 	<title>Lançamento Obliquo</title>
-	<link rel="stylesheet" href="app/lancamento.css">
+
+	<link rel="stylesheet" href="core/css/style.css">
+	<script src="core/plugins/jquery.min.js"></script>
 </head>
 <body>
-	<div class="main">
-		<div class="menu">
-			<img class="data" src="app/imgs/principal.png">
-			<img class="Preview" src="app/imgs/preview.png">
-			<img class="Track" src="app/imgs/track.png">
-			<img class="about" src="app/imgs/info.png">
+	<div class="container">
+		<div class="group gravity">
+			<img src="core/imgs/gravity.png" />
+			<input id="g" type="text" placeholder="9.78033" />
 		</div>
-
-		<div class="data">
-			<div>
-				<img src="app/imgs/gravidade.png">
-				<input id="Utils.g" type="text">
-			</div>
-			<div>
-				<img src="app/imgs/angulo.png">
-				<input id="Launchment.ang" type="text">
-			</div>
-			<div>
-				<img src="app/imgs/velocidade-inicial.png">
-				<input id="Launchment.v0" type="text">
-			</div>
-			<div>
-				<img src="app/imgs/velocidade-x.png">
-				<input id="Launchment.vx" type="text">
-			</div>
-			<div>
-				<img src="app/imgs/velocidade-y.png">
-				<input id="Launchment.vvy" type="text">
-			</div>
-			<div>
-				<img src="app/imgs/pos-x.png">
-				<input id="Launchment.x" type="text">
-			</div>
-			<div>
-				<img src="app/imgs/pos-y.png">
-				<input id="Launchment.y" type="text">
-			</div>
-			<div>
-				<img src="app/imgs/wmax.png">
-				<input id="Launchment.Amax" type="text">
-			</div>
-			<div>
-				<img src="app/imgs/hmax.png">
-				<input id="Launchment.Hmax" type="text">
-			</div>
-			<div>
-				<button id="launch" type="button">Lançar</button>
-			</div>
+		<div class="group angle">
+			<img src="core/imgs/angle.png" />
+			<input id="ang" type="text" placeholder="45º" />
 		</div>
+		<div class="group velocity">
+			<img src="core/imgs/velocity.png" />
+			<input id="v0" type="text" placeholder="100 m/s" />
+		</div>
+		<!-- <div class="group run">
+			<button id="run" type="button">Run</button>
+		</div> -->
+	</div>
 
-		<div class="about">
-			<h1>Lançamento Obliquo</h1>
-			<p>O projeto Lançamento Obliquo foi idealizado e orientado pelo
-			<a href="https://sigmamath.wordpress.com/" target="_blank">Professor Marcio</a>, e desenvolvido por uma equipe de alunos, ambos da <a href="http://fatecmm.edu.br/" target="_blank">FATECMM.</a>
-			</p>
-
-			<p><br>Para contato por favor envie um email para <a href="mailto:diegovictorgonzaga@gmail.com">diegovictorgonzaga@gmail.com</a></p>
+	<div class="container">
+		<div class="group group-action pull-right">
+			<img class="active" id="preview" src="core/imgs/preview.png" />
+			<img class="active" id="track" src="core/imgs/track.png" />
 		</div>
 	</div>
-	<script src="app/lancamento.js"></script>
+
+	<div class="shadow"></div>
+
+	<script src="core/classes/Utils.js"></script>
+	<script src="core/classes/Calc.js"></script>
+	<script src="core/classes/Helper.js"></script>
+
+	<!-- Layers' scripts -->
+	<script src="core/classes/Floor.js"></script>
+	<script src="core/classes/Projectile.js"></script>
+	<script src="core/classes/Preview.js"></script>
+	<script src="core/classes/Track.js"></script>
+
+	<!-- Event handler -->
+	<script src="core/classes/Event.js"></script>
+
+	<!-- Control application -->
+	<script src="core/classes/Simulator.js"></script>
+	<script>
+		// Reset canvas' height and width
+		HTMLCanvasElement.prototype.clear = function () {
+			$(this).attr({
+				height: Utils.height, width: Utils.width
+			});
+		};
+
+		$(document).ready(function () {
+			// var btns = $('.gravity img, .angle img, .velocity img');
+
+			// Start the simulator
+			Simulator.init();
+
+			// Update inputs' width
+			// $('input').on('keyup', function () {
+			// 	var value = $(this).val().replace(/(\.|\,)/g, '');
+			// 	$(this).css('width', value.length * 9 + 14 + 'px');
+			// });
+
+			// Control inputs' visibility on small views
+			// btns.each(function () {
+			// 	$(this).click(function () {
+			// 		if (window.innerWidth <= 380) {
+			// 			if ($(this).siblings().css('display') === 'none') {
+			// 				btns.siblings().hide(400);
+			// 			}
+			// 			$(this).siblings().toggle(400);
+			// 		}
+			// 	});
+			// });
+
+			// $(window).resize(function () {
+			// 	btns.siblings().hide(0);
+			// 	if (window.innerWidth > 380) {
+			// 		btns.siblings().show(0);
+			// 	}
+			// });
+		});
+	</script>
 </body>
 </html>
