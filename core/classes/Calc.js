@@ -52,7 +52,7 @@
 						}
 
 						Calc.ctx.fillText(
-							key.toUpperCase() + ':' + position[key].toFixed(2),
+							key + ':' + position[key].toFixed(2),
 							Projectile.x + Utils.margin + r,
 							Projectile.y - 15 * (i + 1)
 						);
