@@ -54,14 +54,6 @@ var Simulator = {
 		});
 		Event.canvas.clear();
 
-		// Prepare Floor and Preview before launch
-		function adjust () {
-			if (Utils.useScroll) {
-				Track.canvas.clear();
-				window.scrollTo(0, Utils.height);
-			}
-		}
-
 		// Attach mouse's events
 		['mousedown', 'mousemove', 'mouseup']
 		.forEach(function (eventName) {
