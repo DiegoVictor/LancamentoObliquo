@@ -65,17 +65,14 @@
 	},
 
 
-			this.data.validated = false;
-			if (event.clientY > this.data.y1
-				&& this.data.x1 > event.clientX) {
-				this.data.validated = true;
 
-			}
 
 			this.data.x2 = event.clientX;
 			this.data.y2 = event.clientY;
-		}
 	},
 
+	validate: function () {
+		return (this.data.y2 > this.data.y1
+			&& this.data.x1 > this.data.x2);
 	}
 };
