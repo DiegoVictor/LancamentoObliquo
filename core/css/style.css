@@ -25,13 +25,8 @@ canvas {
 
 .container {
 	box-sizing: border-box;
-	padding-left: 10px;
 	padding-top: 10px;
 	position: fixed;
-}
-
-.container + .container {
-	padding-left: 0px;
 	right: 0px;
 	top: 0px;
 	width: auto;
