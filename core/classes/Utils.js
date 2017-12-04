@@ -18,6 +18,16 @@
 
 	// Update this class properties
 
+	/**
+	 * Update his properties
+	 *
+	 * Check wheter is necessary scroll the page
+	 * during the launchand set the scroll points
+	 * when necessary
+	 *
+	 * @param {Number} y - Floor's height
+	 * @param {Object} sizes - Launch's max height and width
+	 **/
 	update: function (y, sizes) {
 		this.height = window.innerHeight;
 		this.width = window.innerWidth;

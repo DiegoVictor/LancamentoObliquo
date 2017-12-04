@@ -9,6 +9,13 @@
 	unit: 100, // scale's unit
 	y: 35, // Indicates where the floor starts
 
+	/**
+	 * Draw floor and the scale
+	 *
+	 * @param {Number} y - Floor's height (Utils.height - Floor.y)
+	 * @param {Number} length - Where the floor finish
+	 * @param {Number} starting_point - Where the scale starts
+	 **/
 	draw: function (y, length, starting_point) {
 		this.canvas.clear();
 		this.ctx.lineWidth = 2;

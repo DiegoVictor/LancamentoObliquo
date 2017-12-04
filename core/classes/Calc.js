@@ -7,6 +7,13 @@
  var Calc = {
 	name: 'Calc',
 
+	/**
+	 * Calculate a position based in t (steps elapsed)
+	 * (Used only by Projectile, to return a param to its update)
+	 *
+	 * @param {Number} t - Steps elapsed
+	 * @return {Object} A object with a position (x, y)
+	 **/
 	pos: function (t) {
 		var data = this.data;
 		return {
@@ -28,8 +35,15 @@
 		}
 	},
 
-	// Calculate some parameters like:
-	// vx, vy, Amax and Hmax
+	/**
+	 * Calculate some parameters like:
+	 * vx, vy, Amax and Hmax
+	 *
+	 * @param {Number} v0 - Launch's initial velocity
+	 * @param {Number} ang - Launch's angle
+	 * @param {Number} g - Gravity
+	 * @return {Object} Launch's data
+	 **/
 	prepare: function (v0, ang, g) {
 		return {
 			g: g,

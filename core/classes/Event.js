@@ -8,6 +8,13 @@
 	name: 'Event',
 	began: false, // Indicate if a interaction is running
 
+	/**
+	 * Control preview and track display
+	 *
+	 * @see Simulator.js:47
+	 * @param {Object} o - Preview or Track object
+	 * @param {Function} callback
+	 **/
 	display: function (o, callback) {
 		$('#'+o.name.toLowerCase()).click(function () {
 			o.show = !o.show;
@@ -21,6 +28,13 @@
 
 	// Store interaction data
 	data: {},
+	/**
+	 * Handle mouse events
+	 *
+	 * @see Simulator.js:92
+	 * @param {String} eventName - Event's name triggered
+	 * @param {String} callback
+	 **/
 	handle: function (eventName, callback) {
 		var self = this;
 		switch (eventName) {
@@ -63,6 +77,12 @@
 		}
 	},
 
+	/**
+	 * Update Event's canvas sizes
+	 *
+	 * @see Simulator.js:96
+	 * @param {Function} callback
+	 **/
 	resize: function (callback) {
 		var self = this;
 		$(window).resize(function () {
@@ -73,6 +93,11 @@
 		});
 	},
 
+	/**
+	 * Draw a shape to show the launch angle
+	 *
+	 * @param {Object} event - JavaScript Event
+	 **/
 	shape: function (event) {
 		this.canvas.clear();
 		this.ctx.lineWidth = 2;
@@ -91,6 +116,12 @@
 		this.data.y2 = event.clientY;
 	},
 
+	/**
+	 * Check whether a shape was drew from right top
+	 * to left bottom (any size)
+	 *
+	 * @return {boolean}
+	 **/
 	validate: function () {
 		return (this.data.y2 > this.data.y1
 			&& this.data.x1 > this.data.x2);

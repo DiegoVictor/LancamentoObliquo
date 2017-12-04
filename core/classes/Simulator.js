@@ -5,6 +5,10 @@ var Simulator = {
 	miliseconds: 30,
 	t: 0, // Launch time elapsed
 
+	/**
+	 * Starts everything that is necessary to simulator
+	 * runs
+	 **/
 	init: function () {
 		Utils.update(Floor.y);
 		Helper.arc = function () {
@@ -121,6 +125,11 @@ var Simulator = {
 		});
 	},
 
+	/**
+	 * Reset the simulator to initial state
+	 *
+	 * @param {Object} sizes - (Optional) Launch's max height and width
+	 **/
 	reset: function (sizes) {
 		Utils.update(Floor.y, sizes);
 		Floor.draw(Utils.floor_y, Utils.width, Utils.margin);
@@ -135,6 +144,9 @@ var Simulator = {
 		}
 	},
 
+	/**
+	 * Starts the launch animation
+	 **/
 	run: function () {
 		Simulator.reset({width: Calc.data.Amax, height: Calc.data.Hmax});
 
