@@ -12,9 +12,5 @@
 		this.canvas.clear();
 		this.ctx.strokeStyle = 'white';
 		this.arc();
-	},
-
-	reset: function (y) {
-		this.update({y: y}).draw();
 	}
 };

@@ -135,7 +135,6 @@ var Simulator = {
 		});
 
 		Floor.draw(Utils);
-		Projectile.reset(Utils.floor_y);
 	},
 
 	// Launch the projectile
