@@ -96,28 +96,6 @@ var Simulator = {
 			Event.handle(eventName, callback);
 		});
 
-		// Run manually
-		// $('#run').click(function () {
-		// 	var data = {g: Utils.g, ang: 45 / Utils.degree, v0: 100};
-		//
-		// 	Simulator.reset();
-		// 	['g', 'ang', 'v0'].forEach(function(dataName) {
-		// 		var value = $('#'+dataName).val();
-		//
-		// 		if (!isNaN(parseFloat(value))) {
-		// 			if (dataName === 'ang') {
-		// 				value = value / Utils.degree;
-		// 			}
-		// 			data[dataName] = value;
-		// 		}
-		// 	});
-		//
-		// 	Calc.data = Calc.prepare(data.v0, data.ang, data.g);
-		// 	Simulator.run(adjust);
-		// });
-	},
-
-	// Reset the simulator to initial state
 		// Adjust things when the screen change of sizes
 		Event.resize(function () {
 			if (Simulator.t > 0) Simulator.run(); else Simulator.reset();
