@@ -25,6 +25,7 @@ canvas {
 
 .container {
 	box-sizing: border-box;
+	color: white;
 	padding-top: 10px;
 	position: fixed;
 	right: 0px;
