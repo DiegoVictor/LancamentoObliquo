@@ -18,20 +18,21 @@ var Simulator = {
 		};
 
 		Projectile.y = Utils.floor_y;
-		[Floor, Projectile, Preview, Track, Event, Calc]
-		.forEach(function (workspace) {
-			var canvas = $('<canvas id="'+workspace.name+'"></canvas>').prependTo('body');
 
-			if (!isNaN(workspace.r)) {
-				workspace.__proto__ = Helper;
+			}
+		[Floor, Projectile, Preview, Track, Event]
+		.forEach(function (o) {
+			var canvas = $('<canvas id="'+o.name+'"></canvas>').prependTo('body');
+
+			if (!isNaN(o.r)) {
+				o.__proto__ = Helper;
 			}
 
-			workspace.canvas = canvas.get(0);
-			workspace.ctx = workspace.canvas.getContext('2d');
-			if (workspace.hasOwnProperty('draw')) {
-				workspace.draw(Utils);
+			o.canvas = canvas.get(0);
+			o.ctx = o.canvas.getContext('2d');
+			if (o.hasOwnProperty('draw')) {
+				o.draw(Utils.floor_y, Utils.width, Utils.margin);
 			}
-
 
 			// Preview and Track
 			if (typeof o.show === 'boolean') {
