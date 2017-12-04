@@ -7,6 +7,7 @@
  var Calc = {
 	name: 'Calc',
 
+	pos: function (t) {
 		var data = this.data;
 		return {
 			x: (function (x) {
