@@ -64,11 +64,22 @@
 		});
 	},
 
+	shape: function (event) {
+		this.canvas.clear();
+		this.ctx.lineWidth = 2;
 
+		this.ctx.moveTo(this.data.x1, this.data.y1);
+		this.ctx.lineTo(event.clientX, event.clientY);
+		this.ctx.strokeStyle = 'white';
+		this.ctx.stroke();
 
+		this.ctx.lineTo(this.data.x1, event.clientY);
+		this.ctx.lineTo(this.data.x1, this.data.y1);
+		this.ctx.setLineDash([5, 5]);
+		this.ctx.stroke();
 
-			this.data.x2 = event.clientX;
-			this.data.y2 = event.clientY;
+		this.data.x2 = event.clientX;
+		this.data.y2 = event.clientY;
 	},
 
 	validate: function () {
