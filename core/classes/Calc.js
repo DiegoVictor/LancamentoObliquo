@@ -22,7 +22,7 @@
 					y = 0;
 				}
 
-				return floor_y - y;
+				return y;
 			}(data.vy * t - (data.g * Math.pow(t, 2) / 2)))
 		}
 	},
