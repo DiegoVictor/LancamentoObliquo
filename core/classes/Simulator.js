@@ -123,31 +123,29 @@ var Simulator = {
 	},
 
 	// Reset the simulator to initial state
-	reset: function () {
-		Utils.update(Floor.y, sizes);
-		clearInterval(this.interval);
-		window.scrollTo(0, Utils.height);
-
-		[Simulator, Preview, Track, Calc].forEach(function (Layer) {
-			if (typeof Layer.t === 'number') {
-				Layer.t = 0;
-			}
-
-			if (typeof Layer.canvas !== 'undefined') {
-				Layer.canvas.clear();
-			}
 		// Adjust things when the screen change of sizes
 		Event.resize(function () {
 			if (Simulator.t > 0) Simulator.run(); else Simulator.reset();
 		});
-
-		Floor.draw(Utils);
 	},
 
 	// Launch the projectile
 	run: function (callback) {
 		Utils.update({width: Calc.data.Amax, height: Calc.data.Hmax}, Floor.y);
 		callback();
+	reset: function (sizes) {
+		Utils.update(Floor.y, sizes);
+		Floor.draw(Utils.floor_y, Utils.width, Utils.margin);
+		clearInterval(Simulator.interval);
+
+		if (Simulator.t > 0) {
+			Projectile.update(Calc.pos(Simulator.t), Utils.floor_y).draw();
+		}
+		else {
+			Projectile.update({y: Utils.floor_y}).draw();
+			window.scrollTo(0, Utils.height);
+		}
+	},
 
 
 		[Preview, Track].forEach(function (o) {
