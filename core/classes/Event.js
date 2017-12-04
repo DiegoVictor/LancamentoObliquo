@@ -54,6 +54,15 @@
 		}
 	},
 
+	resize: function (callback) {
+		var self = this;
+		$(window).resize(function () {
+			callback();
+			self.canvas.height = window.innerHeight;
+			self.canvas.width = window.innerWidth;
+			
+		});
+	},
 
 
 			this.data.validated = false;

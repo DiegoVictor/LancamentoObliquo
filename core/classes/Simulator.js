@@ -92,35 +92,10 @@ var Simulator = {
 					};
 					break;
 
-		// Adjust things when the screen change of sizes
-		$(window).resize(function () {
-			var position;
-
-			clearInterval(Simulator.interval);
-			if (Simulator.t > 0) {
-				position = Calc.pos(Simulator.t, Utils.floor_y);
-
-				Track.t = 0;
-				Simulator.run(function () {
-					Projectile.update(position);
-					Floor.draw(Utils);
-					[Preview, Track, Projectile]
-					.forEach(function (workspace) {
-						workspace.draw(Calc, Utils.floor_y, Simulator.t);
-					});
-				});
-			}
-			else {
-				Utils.update(false, Floor.y);
-				Projectile.reset(Utils.floor_y);
-				Floor.draw(Utils);
 				case 'mouseup':
 					callback = Simulator.run;
 					break;
 			}
-
-			Event.canvas.height = window.innerHeight;
-			Event.canvas.width = window.innerWidth;
 			Event.handle(eventName, callback);
 		});
 
@@ -160,6 +135,9 @@ var Simulator = {
 			if (typeof Layer.canvas !== 'undefined') {
 				Layer.canvas.clear();
 			}
+		// Adjust things when the screen change of sizes
+		Event.resize(function () {
+			if (Simulator.t > 0) Simulator.run(); else Simulator.reset();
 		});
 
 		Floor.draw(Utils);
