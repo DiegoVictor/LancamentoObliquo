@@ -9,24 +9,6 @@
 </head>
 <body>
 	<div class="container">
-		<div class="group gravity">
-			<img src="core/imgs/gravity.png" />
-			<input id="g" type="text" placeholder="9.78033" />
-		</div>
-		<div class="group angle">
-			<img src="core/imgs/angle.png" />
-			<input id="ang" type="text" placeholder="45º" />
-		</div>
-		<div class="group velocity">
-			<img src="core/imgs/velocity.png" />
-			<input id="v0" type="text" placeholder="100 m/s" />
-		</div>
-		<!-- <div class="group run">
-			<button id="run" type="button">Run</button>
-		</div> -->
-	</div>
-
-	<div class="container">
 		<div class="group group-action pull-right">
 			<img class="active" id="preview" src="core/imgs/preview.png" />
 			<img class="active" id="track" src="core/imgs/track.png" />
@@ -59,35 +41,8 @@
 		};
 
 		$(document).ready(function () {
-			// var btns = $('.gravity img, .angle img, .velocity img');
-
 			// Start the simulator
 			Simulator.init();
-
-			// Update inputs' width
-			// $('input').on('keyup', function () {
-			// 	var value = $(this).val().replace(/(\.|\,)/g, '');
-			// 	$(this).css('width', value.length * 9 + 14 + 'px');
-			// });
-
-			// Control inputs' visibility on small views
-			// btns.each(function () {
-			// 	$(this).click(function () {
-			// 		if (window.innerWidth <= 380) {
-			// 			if ($(this).siblings().css('display') === 'none') {
-			// 				btns.siblings().hide(400);
-			// 			}
-			// 			$(this).siblings().toggle(400);
-			// 		}
-			// 	});
-			// });
-
-			// $(window).resize(function () {
-			// 	btns.siblings().hide(0);
-			// 	if (window.innerWidth > 380) {
-			// 		btns.siblings().show(0);
-			// 	}
-			// });
 		});
 	</script>
 </body>
