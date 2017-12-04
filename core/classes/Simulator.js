@@ -6,7 +6,7 @@ var Simulator = {
 	t: 0, // Launch time elapsed
 
 	init: function () {
-		Utils.update(false, Floor.y);
+		Utils.update(Floor.y);
 		Helper.arc = function () {
 			this.ctx.beginPath();
 			this.ctx.arc(
@@ -117,7 +117,7 @@ var Simulator = {
 
 	// Reset the simulator to initial state
 	reset: function () {
-		Utils.update(false, Floor.y);
+		Utils.update(Floor.y, sizes);
 		clearInterval(this.interval);
 		window.scrollTo(0, Utils.height);
 

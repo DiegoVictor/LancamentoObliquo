@@ -17,17 +17,16 @@
 	degree: 180 / Math.PI,
 
 	// Update this class properties
-	update: function (sizes, floor_y) {
-		var size;
 
+	update: function (y, sizes) {
 		this.height = window.innerHeight;
 		this.width = window.innerWidth;
 
 		this.useScroll = false;
-		if (sizes) {
+		if (typeof sizes === 'object') {
 			this.scroll.x = this.width / 2 - 20;
 
-			for (size in sizes) {
+			for (var size in sizes) {
 				if (sizes[size] > this[size] - 150) {
 					this.useScroll = true;
 					this[size] = sizes[size] + 175;
@@ -36,6 +35,6 @@
 			this.scroll.y = this.height - 185;
 		}
 
-		this.floor_y = this.height - floor_y;
+		this.floor_y = this.height - y;
 	}
 };
