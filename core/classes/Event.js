@@ -6,7 +6,9 @@
  **/
  var Event = {
 	name: 'Event',
-	began: false, // Indicate if a interaction is running
+	data: {}, // Store interaction data
+	// Indicate if a interaction is running
+	began: false,
 
 	/**
 	 * Control preview and track display
@@ -26,8 +28,6 @@
 		});
 	},
 
-	// Store interaction data
-	data: {},
 	/**
 	 * Handle mouse events
 	 *

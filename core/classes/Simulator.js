@@ -1,8 +1,7 @@
 var Simulator = {
-	interval: null, // Store the loop
-
 	// Time between every loop's iterations (miliseconds)
 	miliseconds: 30,
+	interval: null, // Store the loop
 	t: 0, // Launch time elapsed
 
 	/**
