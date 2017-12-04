@@ -180,15 +180,7 @@ var Simulator = {
 		Utils.update({width: Calc.data.Amax, height: Calc.data.Hmax}, Floor.y);
 		callback();
 
-		// Show data on interface (inputs)
-		['g', 'ang', 'v0'].forEach(function (dataName) {
-			var input = $('#'+dataName);
-			input.val(Calc.data[dataName]).trigger('keyup');
-		});
 
-		// Show Hmax
-		Calc.show('hmax', function (callback) {
-			callback.call(Floor, Projectile, Utils);
 		});
 
 		this.interval = setInterval(
@@ -213,13 +205,6 @@ var Simulator = {
 				}(Projectile.y < Utils.scroll.y));
 
 				Projectile.draw();
-				Calc.show('position', function (callback) {
-					callback(Projectile, Utils);
-				});
-				Track.draw(Calc, Utils.floor_y, Simulator.t);
-				Calc.show('velocity', function (callback) {
-					callback.call(Event, Utils, Floor.y, Simulator.t);
-				});
 			},
 			Simulator.miliseconds
 		);
