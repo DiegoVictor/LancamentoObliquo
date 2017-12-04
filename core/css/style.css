@@ -28,15 +28,14 @@ canvas {
 	padding-left: 10px;
 	padding-top: 10px;
 	position: fixed;
-	top: 0px;
-	width: 100%;
-	z-index: 3;
 }
 
 .container + .container {
 	padding-left: 0px;
 	right: 0px;
+	top: 0px;
 	width: auto;
+	z-index: 3;
 }
 
 .pull-right {
