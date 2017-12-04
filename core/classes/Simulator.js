@@ -57,7 +57,6 @@ var Simulator = {
 		// Prepare Floor and Preview before launch
 		function adjust () {
 			if (Utils.useScroll) {
-				Floor.draw(Utils);
 				Track.canvas.clear();
 				Preview.draw(Calc, Utils.floor_y);
 				window.scrollTo(0, Utils.height);

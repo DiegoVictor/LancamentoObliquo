@@ -9,12 +9,12 @@
 	unit: 100, // scale's unit
 	y: 35, // Indicates where the floor starts
 
-	draw: function (Utils) {
+	draw: function (y, length, starting_point) {
 		this.canvas.clear();
 		this.ctx.lineWidth = 2;
 
-		this.ctx.moveTo(0, Utils.floor_y);
-		this.ctx.lineTo(Utils.width, Utils.floor_y);
+		this.ctx.moveTo(0, y);
+		this.ctx.lineTo(length, y);
 
 		this.ctx.strokeStyle = 'white';
 		this.ctx.stroke();
@@ -22,10 +22,10 @@
 		// Draw the scale
 		this.ctx.fillStyle = 'white';
 		this.ctx.font = '11px Consolas';
-		for (var i = 0; i < Utils.width / this.scale; i++) {
+		for (var i = 0; i < length / this.scale; i++) {
 			this.ctx.fillText(
-				i * this.unit, Utils.margin + i * this.scale,
-				Utils.floor_y + 12
+				i * this.unit, starting_point + i * this.scale,
+				y + 12
 			);
 		}
 	}
