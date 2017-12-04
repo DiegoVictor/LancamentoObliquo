@@ -42,7 +42,7 @@ canvas {
 	float: right !important;
 }
 
-.group, .group img {
+.group > * {
 	float: left;
 }
 
