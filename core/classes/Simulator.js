@@ -121,10 +121,6 @@ var Simulator = {
 		});
 	},
 
-	// Launch the projectile
-	run: function (callback) {
-		Utils.update({width: Calc.data.Amax, height: Calc.data.Hmax}, Floor.y);
-		callback();
 	reset: function (sizes) {
 		Utils.update(Floor.y, sizes);
 		Floor.draw(Utils.floor_y, Utils.width, Utils.margin);
@@ -139,12 +135,16 @@ var Simulator = {
 		}
 	},
 
+	run: function () {
+		Simulator.reset({width: Calc.data.Amax, height: Calc.data.Hmax});
 
+		Track.t = 0;
+		Track.canvas.clear();
 		[Preview, Track].forEach(function (o) {
 			o.draw(Calc.data.Amax / Preview.step);
 		});
 
-		this.interval = setInterval(
+		Simulator.interval = setInterval(
 			function () {
 				Projectile.update(Calc.pos(Simulator.t), Utils.floor_y);
 				if (Projectile.x >= Calc.data.Amax) {
@@ -155,17 +155,18 @@ var Simulator = {
 				}
 
 				// Scroll the screen
-				(function (mustScrollY) {
+				(function () {
 					var y = Utils.height;
 
 					// Pixels between the top window and th projectile
-					if (mustScrollY) {
+					if (Projectile.y < Utils.scroll.y) {
 						y = Projectile.y - 100;
 					}
 					window.scrollTo(Projectile.x - Utils.scroll.x || 0, y);
-				}(Projectile.y < Utils.scroll.y));
+				}());
 
 				Projectile.draw();
+				Track.draw();
 			},
 			Simulator.miliseconds
 		);
