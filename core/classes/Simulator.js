@@ -156,7 +156,7 @@ var Simulator = {
 
 		this.interval = setInterval(
 			function () {
-				Projectile.update(Calc.pos(Simulator.t, Utils.floor_y));
+				Projectile.update(Calc.pos(Simulator.t), Utils.floor_y);
 				if (Projectile.x >= Calc.data.Amax) {
 					clearInterval(Simulator.interval);
 				}

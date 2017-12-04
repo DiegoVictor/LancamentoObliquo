@@ -12,7 +12,6 @@ var Helper = {
 			}
 
 			do {
-				this.update(Calc.pos(this.t, floor_y)).arc();
 
 				this.t += this.step;
 			} while (this.x < Calc.data.Amax && this.t < t);
@@ -20,13 +19,16 @@ var Helper = {
 	},
 
 	// Update object position
-	update: function (p) {
+	update: function (p, y) {
 		this.x = 0;
 		if (!isNaN(p.x)) {
 			this.x = p.x;
 		}
 
 		this.y = p.y;
+		if (typeof y === 'number') {
+			this.y = y - p.y;
+		}
 		return this;
 	}
 };
