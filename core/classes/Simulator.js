@@ -32,18 +32,12 @@ var Simulator = {
 				workspace.draw(Utils);
 			}
 
-			if (typeof workspace.show === 'boolean') {
-				// Control preview and track display
-				$('#'+workspace.name.toLowerCase()).click(function () {
-					$(this).toggleClass('active');
-					workspace.show = !workspace.show;
-					if (workspace.t !== undefined) {
-						workspace.t = 0;
-					}
 
-					workspace.canvas.clear();
-					if (Calc.data) {
-						workspace.draw(Calc, Utils.floor_y, Simulator.t);
+			// Preview and Track
+			if (typeof o.show === 'boolean') {
+				Event.display(o, function () {
+					if (Simulator.t > 0) {
+						o.draw(Calc.data.Amax / Preview.step);
 					}
 				});
 			}

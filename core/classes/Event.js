@@ -8,6 +8,15 @@
 	name: 'Event',
 	began: false, // Indicate if a interaction is running
 
+	display: function (o, callback) {
+		$('#'+o.name.toLowerCase()).click(function () {
+			o.show = !o.show;
+			o.t = 0;
+			$(this).toggleClass('active');
+			
+			o.canvas.clear();
+			callback();
+		});
 	},
 
 	// Store interaction data
