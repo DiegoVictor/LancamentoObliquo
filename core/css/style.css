@@ -10,21 +10,6 @@ canvas {
 	z-index: 2;
 }
 
-input {
-	background: transparent;
-	border: 0px;
-	box-sizing: border-box;
-	color: white;
-	font-family: Consolas, Calibri, sans-serif;
-	line-height: 20px;
-	margin-right: 2px;
-	padding: 2px 7px;
-}
-
-input:hover {
-	background: rgba(255, 255, 255, 0.1);
-}
-
 #Event {
 	position: fixed;
 	z-index: 3;
@@ -58,10 +43,6 @@ input:hover {
 	float: right !important;
 }
 
-.hamburger {
-	display: none;
-}
-
 .group, .group img {
 	float: left;
 }
@@ -84,55 +65,4 @@ input:hover {
 
 .group-action img.active {
 	opacity: 1;
-}
-
-.angle input {
-	width: 35px;
-}
-
-.gravity input, .velocity input {
-	margin-left: -3px;
-	width: 63px;
-}
-
-.velocity input {
-	margin-left: 3px;
-}
-
-#run {
-	background: transparent;
-	border: 1px solid white;
-	border-radius: 2px;
-	color: white;
-	font-family: Calibri, sans-serif;
-	font-size: 12px;
-	margin-left: 5px;
-	margin-top: 2.5px;
-	text-transform: lowercase;
-}
-
-@media (max-width: 380px) {
-	.container {
-		max-width: 205px;
-		padding-top: 10px;
-		width: auto;
-	}
-
-	.container .group-action {
-		display: block;
-		margin-top: 2px;
-	}
-
-	.group input {
-		display: none;
-		margin-top: -1px;
-	}
-
-	.gravity img {
-		margin-top: 1px;
-	}
-
-	.angle img {
-		margin-right: 3px;
-	}
 }
