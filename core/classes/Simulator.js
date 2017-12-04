@@ -17,7 +17,6 @@ var Simulator = {
 			this.ctx.stroke();
 		};
 
-		Projectile.y = Utils.floor_y;
 		Helper.updateState = function  (t) {
 			var p = Calc.pos(this.t);
 			p.y = Utils.floor_y - p.y;
@@ -29,6 +28,7 @@ var Simulator = {
 			return false;
 		};
 
+		Projectile.y = Utils.floor_y;
 		[Floor, Projectile, Preview, Track, Event]
 		.forEach(function (o) {
 			var canvas = $('<canvas id="'+o.name+'"></canvas>').prependTo('body');
