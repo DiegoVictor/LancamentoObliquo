@@ -1,20 +1,20 @@
 var Helper = {
 	// Reusable draw method
-	draw: function (Calc, floor_y, t) {
+	draw: function (t) {
 		if (this.show) {
+			var time = null;
+			
+			this.x = 0;
 			if (this.name === 'Preview') {
 				this.t = 0;
-				t = Calc.data.Amax / this.step;
-			}
-
-			if (this.t === 0) {
 				this.canvas.clear();
+				time = t;
 			}
-
-			do {
-
+			
+			while (this.updateState(time)) { // @see Simulator.js:23
 				this.t += this.step;
-			} while (this.x < Calc.data.Amax && this.t < t);
+				this.arc();
+			}
 		}
 	},
 

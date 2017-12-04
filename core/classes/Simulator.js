@@ -58,7 +58,6 @@ var Simulator = {
 		function adjust () {
 			if (Utils.useScroll) {
 				Track.canvas.clear();
-				Preview.draw(Calc, Utils.floor_y);
 				window.scrollTo(0, Utils.height);
 			}
 		}
@@ -119,7 +118,6 @@ var Simulator = {
 		// 	});
 		//
 		// 	Calc.data = Calc.prepare(data.v0, data.ang, data.g);
-		// 	Preview.draw(Calc, Utils.floor_y);
 		// 	Simulator.run(adjust);
 		// });
 	},
@@ -152,6 +150,8 @@ var Simulator = {
 		callback();
 
 
+		[Preview, Track].forEach(function (o) {
+			o.draw(Calc.data.Amax / Preview.step);
 		});
 
 		this.interval = setInterval(
