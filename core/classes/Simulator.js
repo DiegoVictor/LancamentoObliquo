@@ -18,8 +18,17 @@ var Simulator = {
 		};
 
 		Projectile.y = Utils.floor_y;
+		Helper.updateState = function  (t) {
+			var p = Calc.pos(this.t);
+			p.y = Utils.floor_y - p.y;
 
+			if (this.t < (t || Simulator.t) && this.x < Calc.data.Amax) {
+				this.update(p);
+				return true;
 			}
+			return false;
+		};
+
 		[Floor, Projectile, Preview, Track, Event]
 		.forEach(function (o) {
 			var canvas = $('<canvas id="'+o.name+'"></canvas>').prependTo('body');
