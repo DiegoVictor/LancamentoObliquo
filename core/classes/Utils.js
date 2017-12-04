@@ -4,19 +4,13 @@
  * Group many reusable functionalities and properties
  **/
  var Utils = {
-	margin: 45, // Window left margin
-
-	// Store what point the screen must start
-	// the scroll, if necessary
-	scroll: {},
-
-	// Default gravity
-	g: 9.78033,
-
 	// Just to prevent few recalculations
 	degree: 180 / Math.PI,
+	g: 9.78033, // Default gravity
+	margin: 60, // Window left margin
 
-	// Update this class properties
+	//Store the screen start scroll point, if necessary
+	scroll: {},
 
 	/**
 	 * Update his properties
