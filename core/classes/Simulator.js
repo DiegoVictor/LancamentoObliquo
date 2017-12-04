@@ -61,49 +61,36 @@ var Simulator = {
 		}
 
 		// Attach mouse's events
-		$(Event.canvas).on(
-			'mousedown mousemove mouseup',
-			function (event) {
-				Event.handler(event); // Process the event
-
-				switch (event.type) {
-					case 'mousedown':
+		['mousedown', 'mousemove', 'mouseup']
+		.forEach(function (eventName) {
+			var callback;
+			switch(eventName) {
+				case 'mousedown':
+					callback = function () {
+						Simulator.t = 0;
 						Simulator.reset();
-						break;
 
-					case 'mousemove':
-						if (Event.began) {
-							$('.container').css('z-index', '2');
+						[Preview, Track].forEach(function (o) {
+							o.canvas.clear();
+						});
+					};
+					break;
 
-							// Make some calculations
-							Calc.data = (function (x, y) {
-								return Calc.prepare(
-									Math.floor((x + y) / 4), // v0
-									Math.atan(y / x), // angle
-									Utils.g
-								);
-							})(Event.data.x, Event.data.y);
-
-							Preview.canvas.clear();
-							if (Event.data.validated) {
-								// Draw launch preview
-								Preview.draw(Calc, Utils.floor_y);
-							}
+				case 'mousemove':
+					callback = function (x, y) {
+						Preview.canvas.clear();
+						if (Event.validate()) {
+							Calc.data = Calc.prepare(
+								Math.floor((x + y) / 4), // v0
+								Math.atan(y / x), // angle
+								Utils.g
+							);
+							
+							// Draw launch preview
+							Preview.draw(Calc.data.Amax / Preview.step);
 						}
-						break;
-
-					case 'mouseup':
-						$('.container').css('z-index', '3');
-						if (Event.data.validated) {
-							Simulator.run(adjust);
-						}
-						else {
-							Event.data.validated = false;
-						}
-						break;
-				}
-			}
-		);
+					};
+					break;
 
 		// Adjust things when the screen change of sizes
 		$(window).resize(function () {
@@ -127,10 +114,14 @@ var Simulator = {
 				Utils.update(false, Floor.y);
 				Projectile.reset(Utils.floor_y);
 				Floor.draw(Utils);
+				case 'mouseup':
+					callback = Simulator.run;
+					break;
 			}
 
 			Event.canvas.height = window.innerHeight;
 			Event.canvas.width = window.innerWidth;
+			Event.handle(eventName, callback);
 		});
 
 		// Run manually
