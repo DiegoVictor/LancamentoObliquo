@@ -100,6 +100,19 @@ var Simulator = {
 
 				case 'mousemove':
 					callback = function (x, y) {
+						Public.canvas.clear();
+						Public.ctx.lineWidth = 2;
+
+						Public.ctx.moveTo(Event.data.x1, Event.data.y1);
+						Public.ctx.lineTo(Event.data.x2, Event.data.y2);
+						Public.ctx.strokeStyle = 'white';
+						Public.ctx.stroke();
+
+						Public.ctx.lineTo(Event.data.x1, Event.data.y2);
+						Public.ctx.lineTo(Event.data.x1, Event.data.y1);
+						Public.ctx.setLineDash([5, 5]);
+						Public.ctx.stroke();
+
 						Preview.canvas.clear();
 						if (Event.validate()) {
 							Calc.data = Calc.prepare(
