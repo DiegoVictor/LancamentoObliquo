@@ -10,7 +10,7 @@ canvas {
 	z-index: 2;
 }
 
-#Event {
+#Public {
 	position: fixed;
 	z-index: 3;
 }
