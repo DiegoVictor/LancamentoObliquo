@@ -135,8 +135,16 @@ var Simulator = {
 		});
 
 		// Adjust things when the screen change of sizes
-		Event.resize(function () {
-			if (Simulator.t > 0) Simulator.run(); else Simulator.reset();
+		$(window).resize(function () {
+			Public.canvas.height = window.innerHeight;
+			Public.canvas.width = window.innerWidth;
+
+			if (Simulator.t > 0) {
+				Simulator.run(); 
+			}
+			else {
+				Simulator.reset();
+			}			
 		});
 	},
 
