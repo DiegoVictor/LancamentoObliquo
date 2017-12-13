@@ -111,4 +111,27 @@ canvas {
 
 .group-action img.active {
 	opacity: 1;
+
+.btn-group {
+	margin-top: 15px;
+}
+
+.btn-group .btn {
+	background-color: transparent;
+	border: 0px;
+	border-radius: 3px;
+	font-size: 17px;
+	margin-bottom: 1px;
+	padding: 5px 9px 3px 8px;
+}
+
+.btn-group .btn:hover {
+	background-color: #103354;
+}
+
+.btn-group .btn:active {
+	margin-top: 1px;
+	margin-bottom: 0px;
+}
+
 }
