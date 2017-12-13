@@ -187,6 +187,71 @@ var Simulator = {
 			o.draw(Calc.data.Amax / Preview.step);
 		});
 
+		function print (data, x, y) {
+			var string, size, i = 0;
+			for (var key in data) {
+				this.ctx.textAlign = 'center';
+				string = key + ': ' + data[key].toFixed(2);
+				size = this.ctx.measureText(string);
+				this.ctx.fillStyle = "white";
+				
+				switch (key) {
+					case 'x':
+						x += this.x + this.r;
+					case 'y':
+					case 'vy':
+						y = this.y - (15 * (++i));
+						this.ctx.fillRect(
+							(x - size.width / 2) - 2, y - 20,
+							size.width + 4, 13
+						);
+						
+						this.ctx.fillStyle = "#072a4b";
+						this.ctx.fillText(string, x, y - 10);
+						break;
+
+					case 'hmax':
+						this.ctx.setLineDash([5, 5]);
+						this.ctx.lineWidth = 1;
+
+						this.ctx.moveTo(0, y);
+						this.ctx.lineTo(x, y);
+						this.ctx.lineTo(x, Utils.floor_y);
+						this.ctx.stroke();
+
+						x = x / 2;
+						this.ctx.fillRect(
+							(x - size.width / 2) - 2, y - 20,
+							size.width + 4, 13
+						);
+
+						this.ctx.fillStyle = "#072a4b";
+						this.ctx.fillText(string, x, y - 10);
+						break;
+				}
+			}
+		}
+
+		print.call(
+			Floor,
+			{'hmax': Calc.data.Hmax},
+			(Calc.data.Amax / 2) + Utils.margin + Projectile.r,
+			Utils.floor_y - Calc.data.Hmax - Projectile.r
+		);
+
+		function xyvy () {
+			print.call(
+				Projectile,
+				{
+					'x': Projectile.x,
+					'y': Utils.floor_y - Projectile.y,
+					'vy': Calc.data.vy - (Utils.g * Simulator.t)
+				},
+				Utils.margin,
+			);
+		}
+		xyvy();
+
 		Simulator.interval = setInterval(
 			function () {
 				Projectile.update(Calc.pos(Simulator.t), Utils.floor_y);
@@ -210,6 +275,7 @@ var Simulator = {
 
 				Projectile.draw();
 				Track.draw();
+				xyvy();
 			},
 			Simulator.miliseconds
 		);
