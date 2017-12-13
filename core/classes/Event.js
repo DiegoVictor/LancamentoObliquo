@@ -21,7 +21,7 @@
 		var self = this;
 		switch (eventName) {
 			case 'mousedown':
-				$(self.canvas).on(eventName, function (event) {
+				$('#Public').on(eventName, function (event) {
 					self.began = true;
 					self.data = {
 						x1: event.clientX,
@@ -33,7 +33,7 @@
 				break;
 
 			case 'mousemove':
-				$(self.canvas).on(eventName, function (event) {
+				$('#Public').on(eventName, function (event) {
 					if (self.began) {
 						self.shape(event); // @see Event.js:101
 						$('.container').css('z-index', '2');
@@ -47,8 +47,8 @@
 				break;
 
 			case 'mouseup':
-				$(self.canvas).on(eventName, function () {
 					self.canvas.clear();
+				$('#Public').on(eventName, function () {
 					self.began = false;
 					$('.container').css('z-index', '3');
 					if (self.validate()) { // @see Event.js:125
