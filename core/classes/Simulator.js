@@ -172,7 +172,14 @@ var Simulator = {
 	 * Starts the launch animation
 	 **/
 	run: function () {
-		Simulator.reset({width: Calc.data.Amax, height: Calc.data.Hmax});
+		Utils.digest('g', Utils.g);
+		['ang', 'v0', 'vx'].forEach(function (dataName) {
+			Utils.digest(dataName, Calc.data[dataName]);
+		});
+
+		Simulator.reset(
+			{width: Calc.data.Amax, height: Calc.data.Hmax}
+		);
 
 		Track.t = 0;
 		Track.canvas.clear();

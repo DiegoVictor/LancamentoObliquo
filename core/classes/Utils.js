@@ -12,6 +12,24 @@
 	//Store the screen start scroll point, if necessary
 	scroll: {},
 
+	// Store DOM element
+	dom: {},
+
+	/**
+	 * Set a value to a input
+	 *
+	 * @param {String} element_id - Id of the element without the '#'
+	 * @param {String} value - The value to set the input
+	 **/
+	digest: function (element_id, value) {
+		var e = this.dom[element_id];
+		if (typeof e === 'undefined') {
+			this.dom[element_id] = $('#' + element_id);
+			e = this.dom[element_id];
+		}
+		e.val(parseFloat(value).toFixed(2));
+	},
+
 	/**
 	 * Update his properties
 	 *
