@@ -35,22 +35,22 @@
 			case 'mousemove':
 				$('#Public').on(eventName, function (event) {
 					if (self.began) {
-						self.shape(event); // @see Event.js:101
 						$('.container').css('z-index', '2');
+						self.data.x2 = event.clientX;
+						self.data.y2 = event.clientY;						
 
-						self.data.x = self.data.x1 - self.data.x2;
-						self.data.y = self.data.y2 - self.data.y1;
-
-						callback(self.data.x, self.data.y);
+						callback(
+							self.data.x1 - self.data.x2, 
+							self.data.y2 - self.data.y1
+						);
 					}
 				});
 				break;
 
 			case 'mouseup':
-					self.canvas.clear();
 				$('#Public').on(eventName, function () {
 					self.began = false;
-					$('.container').css('z-index', '3');
+					$('.container').css('z-index', '4');
 					if (self.validate()) { // @see Event.js:125
 						callback();
 					}
