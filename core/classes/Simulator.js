@@ -32,7 +32,7 @@ var Simulator = {
 		};
 
 		Projectile.y = Utils.floor_y;
-		[Floor, Projectile, Preview, Track, Event]
+		[Projectile, Floor, Preview, Track, Public]
 		.forEach(function (o) {
 			var canvas = $('<canvas id="'+o.name+'"></canvas>').prependTo('body');
 
@@ -55,7 +55,8 @@ var Simulator = {
 				});
 			}
 		});
-		Event.canvas.clear();
+		Public.canvas.clear();
+
 
 		// Attach mouse's events
 		['mousedown', 'mousemove', 'mouseup']
@@ -111,6 +112,7 @@ var Simulator = {
 		Utils.update(Floor.y, sizes);
 		Floor.draw(Utils.floor_y, Utils.width, Utils.margin);
 		clearInterval(Simulator.interval);
+		Public.canvas.clear();
 
 		if (Simulator.t > 0) {
 			Projectile.update(Calc.pos(Simulator.t), Utils.floor_y).draw();
