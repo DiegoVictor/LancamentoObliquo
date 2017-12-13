@@ -7,7 +7,7 @@
 	// Just to prevent few recalculations
 	degree: 180 / Math.PI,
 	g: 9.78033, // Default gravity
-	margin: 60, // Window left margin
+	margin: 70, // Window left margin
 
 	//Store the screen start scroll point, if necessary
 	scroll: {},
