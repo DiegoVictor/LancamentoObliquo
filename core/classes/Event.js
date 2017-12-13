@@ -17,7 +17,7 @@
 	 * @param {String} eventName - Event's name triggered
 	 * @param {String} callback
 	 **/
-	handle: function (eventName, callback) {
+	on: function (eventName, callback) {
 		var self = this;
 		switch (eventName) {
 			case 'mousedown':

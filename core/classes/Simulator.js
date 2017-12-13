@@ -131,7 +131,7 @@ var Simulator = {
 					callback = Simulator.run;
 					break;
 			}
-			Event.handle(eventName, callback);
+			Event.on(eventName, callback);
 		});
 
 		// Adjust things when the screen change of sizes
