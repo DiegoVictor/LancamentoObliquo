@@ -13,10 +13,37 @@
 		<div class="group group-action pull-right">
 			<img class="active" id="preview" src="core/imgs/preview.png" title="Esconde/Mostra previsão do lançamento" alt="Previsão" />
 			<img class="active" id="track" src="core/imgs/track.png" title="Esconde/Mostra rastro do projetíl" alt="Rastro"/>
+			<div id="hamburger-menu" class="dropdown-toggle"><span class="glyphicon glyphicon-menu-hamburger"></span></div>
 		</div>
 	</div>
 
-	<div class="shadow"></div>
+	<div class="dropdown-container">
+		<div class="box">
+			<div class="form-group">
+				<label><img src="core/imgs/gravity.png"></label>
+				<input id="g" class="form-control" type="text" value="9.78033">
+			</div>
+			<div class="form-group">
+				<label><img src="core/imgs/angle.png"></label>
+				<input id="ang" class="form-control" type="text" value="45">
+			</div>
+			<div class="form-group">
+				<label><img src="core/imgs/velocity.png"></label>
+				<input id="v0" class="form-control" type="text" value="100">
+			</div>
+			<div class="form-group">
+				<label><img src="core/imgs/velocity-in-x.png"></label>
+				<input id="vx" name="Calc.data.vx" class="form-control" type="text" value="100" disabled="disabled">
+			</div>
+
+			<div class="btn-group text-center">
+				<button class="btn fly" title="Lançar">
+					<span class="glyphicon glyphicon-plane"></span>
+				</button>
+			</div>
+		</div>
+		<div class="dismiss dropdown-toggle"></div>
+	</div>
 
 	<script src="core/classes/Utils.js"></script>
 	<script src="core/classes/Calc.js"></script>

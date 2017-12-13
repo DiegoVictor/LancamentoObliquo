@@ -34,7 +34,7 @@ var Simulator = {
 		Projectile.y = Utils.floor_y;
 		[Projectile, Floor, Preview, Track, Public]
 		.forEach(function (o) {
-			var canvas = $('<canvas id="'+o.name+'"></canvas>').prependTo('body');
+			var canvas = $('<canvas id="' + o.name + '"></canvas>').prependTo('body');
 
 			if (!isNaN(o.r)) {
 				o.__proto__ = Helper;
@@ -57,6 +57,10 @@ var Simulator = {
 		});
 		Public.canvas.clear();
 
+		$('.dropdown-toggle').on('mousedown', function () {
+			$('.dropdown-container, .container').toggleClass('menu');
+		});
+		
 
 		// Attach mouse's events
 		['mousedown', 'mousemove', 'mouseup']
