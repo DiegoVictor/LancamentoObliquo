@@ -61,6 +61,26 @@ var Simulator = {
 			$('.dropdown-container, .container').toggleClass('menu');
 		});
 		
+		$('.fly').click(function () {
+			var value, params = {ang: 0, v0: 0, g: 0};
+
+			for (var data in params) {
+				value = parseFloat($('#' + data).val());
+				if (!isNaN(value)) {
+					params[data] = value;
+					continue;
+				}
+				return;
+			}
+
+			params.ang = params.ang / 180 * Math.PI;
+			Calc.data = Calc.prepare(
+				params.v0, params.ang, params.g
+			);
+
+			Simulator.t = 0;
+			Simulator.run();
+		});
 
 		// Attach mouse's events
 		['mousedown', 'mousemove', 'mouseup']
