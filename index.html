@@ -1,70 +1,78 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
 	<meta charset="UTF-8">
 	<title>Lançamento Obliquo</title>
-	<link rel="stylesheet" href="app/lancamento.css">
+
+	<link rel="stylesheet" href="core/css/style.css">
+	<link rel="stylesheet" href="core/plugins/css/bootstrap.min.css">
+	<script src="core/plugins/jquery.min.js"></script>
 </head>
 <body>
-	<div class="main">
-		<div class="menu">
-			<img class="data" src="app/imgs/principal.png">
-			<img class="Preview" src="app/imgs/preview.png">
-			<img class="Track" src="app/imgs/track.png">
-			<img class="about" src="app/imgs/info.png">
-		</div>
-
-		<div class="data">
-			<div>
-				<img src="app/imgs/gravidade.png">
-				<input id="Utils.g" type="text">
-			</div>
-			<div>
-				<img src="app/imgs/angulo.png">
-				<input id="Launchment.ang" type="text">
-			</div>
-			<div>
-				<img src="app/imgs/velocidade-inicial.png">
-				<input id="Launchment.v0" type="text">
-			</div>
-			<div>
-				<img src="app/imgs/velocidade-x.png">
-				<input id="Launchment.vx" type="text">
-			</div>
-			<div>
-				<img src="app/imgs/velocidade-y.png">
-				<input id="Launchment.vvy" type="text">
-			</div>
-			<div>
-				<img src="app/imgs/pos-x.png">
-				<input id="Launchment.x" type="text">
-			</div>
-			<div>
-				<img src="app/imgs/pos-y.png">
-				<input id="Launchment.y" type="text">
-			</div>
-			<div>
-				<img src="app/imgs/wmax.png">
-				<input id="Launchment.Amax" type="text">
-			</div>
-			<div>
-				<img src="app/imgs/hmax.png">
-				<input id="Launchment.Hmax" type="text">
-			</div>
-			<div>
-				<button id="launch" type="button">Lançar</button>
-			</div>
-		</div>
-
-		<div class="about">
-			<h1>Lançamento Obliquo</h1>
-			<p>O projeto Lançamento Obliquo foi idealizado e orientado pelo
-			<a href="https://sigmamath.wordpress.com/" target="_blank">Professor Marcio</a>, e desenvolvido por uma equipe de alunos, ambos da <a href="http://fatecmm.edu.br/" target="_blank">FATECMM.</a>
-			</p>
-
-			<p><br>Para contato por favor envie um email para <a href="mailto:diegovictorgonzaga@gmail.com">diegovictorgonzaga@gmail.com</a></p>
+	<div class="container">
+		<div class="group group-action pull-right">
+			<img class="active" id="preview" src="core/imgs/preview.png" title="Esconde/Mostra previsão do lançamento" alt="Previsão" />
+			<img class="active" id="track" src="core/imgs/track.png" title="Esconde/Mostra rastro do projetíl" alt="Rastro"/>
+			<div id="hamburger-menu" class="dropdown-toggle"><span class="glyphicon glyphicon-menu-hamburger"></span></div>
 		</div>
 	</div>
-	<script src="app/lancamento.js"></script>
+
+	<div class="dropdown-container">
+		<div class="box">
+			<div class="form-group">
+				<label><img src="core/imgs/gravity.png"></label>
+				<input id="g" class="form-control" type="text" value="9.78033">
+			</div>
+			<div class="form-group">
+				<label><img src="core/imgs/angle.png"></label>
+				<input id="ang" class="form-control" type="text" value="45">
+			</div>
+			<div class="form-group">
+				<label><img src="core/imgs/velocity.png"></label>
+				<input id="v0" class="form-control" type="text" value="100">
+			</div>
+			<div class="form-group">
+				<label><img src="core/imgs/velocity-in-x.png"></label>
+				<input id="vx" name="Calc.data.vx" class="form-control" type="text" value="100" disabled="disabled">
+			</div>
+
+			<div class="btn-group text-center">
+				<button class="btn fly" title="Lançar">
+					<span class="glyphicon glyphicon-plane"></span>
+				</button>
+			</div>
+		</div>
+		<div class="dismiss dropdown-toggle"></div>
+	</div>
+
+	<script src="core/classes/Utils.js"></script>
+	<script src="core/classes/Calc.js"></script>
+	<script src="core/classes/Helper.js"></script>
+
+	<!-- Layers' scripts -->
+	<script src="core/classes/Floor.js"></script>
+	<script src="core/classes/Projectile.js"></script>
+	<script src="core/classes/Preview.js"></script>
+	<script src="core/classes/Track.js"></script>
+	<script src="core/classes/Public.js"></script>
+
+	<!-- Event handler -->
+	<script src="core/classes/Event.js"></script>
+
+	<!-- Control application -->
+	<script src="core/classes/Simulator.js"></script>
+	<script>
+		// Reset canvas' height and width
+		HTMLCanvasElement.prototype.clear = function () {
+			$(this).attr({
+				height: Utils.height, width: Utils.width
+			});
+		};
+
+		$(document).ready(function () {
+			// Start the simulator
+			Simulator.init();
+		});
+	</script>
 </body>
 </html>
