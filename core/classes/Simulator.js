@@ -48,7 +48,7 @@ var Simulator = {
 
 			// Preview and Track
 			if (typeof o.show === 'boolean') {
-				Event.display(o, function () {
+				Event.toggle(o, function () {
 					if (Simulator.t > 0) {
 						o.draw(Calc.data.Amax / Preview.step);
 					}

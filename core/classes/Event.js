@@ -11,24 +11,6 @@
 	began: false,
 
 	/**
-	 * Control preview and track display
-	 *
-	 * @see Simulator.js:47
-	 * @param {Object} o - Preview or Track object
-	 * @param {Function} callback
-	 **/
-	display: function (o, callback) {
-		$('#'+o.name.toLowerCase()).click(function () {
-			o.show = !o.show;
-			o.t = 0;
-			$(this).toggleClass('active');
-			
-			o.canvas.clear();
-			callback();
-		});
-	},
-
-	/**
 	 * Handle mouse events
 	 *
 	 * @see Simulator.js:92
@@ -78,18 +60,20 @@
 	},
 
 	/**
-	 * Update Event's canvas sizes
+	 * Control preview and track display
 	 *
-	 * @see Simulator.js:96
+	 * @see Simulator.js:51
+	 * @param {Object} o - Preview or Track object
 	 * @param {Function} callback
 	 **/
-	resize: function (callback) {
-		var self = this;
-		$(window).resize(function () {
+	toggle: function (o, callback) {
+		$('#' + o.name.toLowerCase())
+		.click(function () {
+			o.t = 0;
+			o.show = !o.show;
+			$(this).toggleClass('active');
+			o.canvas.clear();
 			callback();
-			self.canvas.height = window.innerHeight;
-			self.canvas.width = window.innerWidth;
-			
 		});
 	},
 
