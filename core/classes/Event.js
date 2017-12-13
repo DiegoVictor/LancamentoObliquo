@@ -13,7 +13,7 @@
 	/**
 	 * Handle mouse events
 	 *
-	 * @see Simulator.js:92
+	 * @see Simulator.js:86
 	 * @param {String} eventName - Event's name triggered
 	 * @param {String} callback
 	 **/

@@ -1,3 +1,8 @@
+/**
+ * Object Simulator
+ *
+ * Control the application workflow.
+ **/
 var Simulator = {
 	// Time between every loop's iterations (miliseconds)
 	miliseconds: 30,

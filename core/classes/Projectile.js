@@ -11,7 +11,7 @@
 	/**
 	 * Draw projectile
 	 *
-	 * @see Simulator.js:9
+	 * @see Simulator.js:13
 	 **/
 	draw: function () {
 		this.canvas.clear();
