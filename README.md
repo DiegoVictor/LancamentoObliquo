@@ -7,3 +7,10 @@ toque.
 # Instalando
 Não exige nenhuma instalação, nem mesmo de plug-ins ou bibliotecas de terceiros, é necessário apenas um navegador web moderno. 
 Após efetuar o download do projeto execute o arquivo <strong>index.html</strong>
+
+# Publicação
+Este trabalho foi publicado na revista digital da Faculdade de Tecnologia de Bauru, Revista de Humanidades, Tecnologia e Cultura (REHUTEC), acesse:
+http://fatecbauru.edu.br/ojs/index.php/rehutec/article/view/369
+
+Ou acesse diretamente o PDF aqui:
+http://fatecbauru.edu.br/ojs/index.php/rehutec/article/download/369/266
