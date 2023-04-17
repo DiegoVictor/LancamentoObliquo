@@ -1,4 +1,7 @@
 # Simulador JavaScript de Lançamentos Obliquo
+[![MIT License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](https://raw.githubusercontent.com/DiegoVictor/LancamentoObliquo/main/LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+
 O simulador foi construído utilizando duas tecnologias, seu núcleo programado em JavaScript e a interface em HTML5 Canvas. Para 
 executar um lançamento, basta clicar com o botão direito do mouse, manter pressionado, arrastar e soltar, ao final desta ação
 o objeto é lançado, também foi adaptado para dispositivos com suporte a toque, ou seja, é possível efetuar lançamentos usando 
